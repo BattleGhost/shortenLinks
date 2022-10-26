@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" class="h-100">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Shorten link service">
+        <meta name="author" content="Artur Safonov">
+        <title>Shorten link</title>
+
+        <link rel="icon" th:href="@{assets/favicon.ico}">
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link th:href="@{css/styles.css}" rel="stylesheet">
+    </head>
+
+    <body class="d-flex h-100 text-center text-white bg-dark">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="mb-auto">
+                <div>
+                    <h3 class="float-md-start mb-0">SHORTEN URL</h3>
+                    <nav class="nav nav-masthead justify-content-center float-md-end">
+                        <a class="nav-link active" id="shorten_link" aria-current="page" href="#shorten">Shorten</a>
+                        <a class="nav-link" id="history_link" href="#history">History</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="px-3">
+                <div class="tab-content">
+                    <div id="shorten" class="tab-pane fade in active show">
+                        <h1>Shorten your link.</h1>
+                        <p class="lead">Just paste the url into the field, click on the button and voilà - get your shortened link!</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <select class="form-select input-group-text">
+                                    <option value="https://" selected>https://</option>
+                                    <option value="http://">http://</option>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="alert alert-success" id="shortenSuccess" role="alert" style="display: none">
+                        </div>
+                        <div class="alert alert-danger" id="shortenFail" role="alert" style="display: none">
+                        </div>
+                        <div class="lead" id="buttonContainer">
+                            <a class="btn btn-lg btn-secondary fw-bold border-white bg-white" id="submitButton" onclick="shorten()">Shorten!</a>
+                        </div>
+                    </div>
+                    <div id="history" class="tab-pane fade">
+                        <div class="timer-loader" id="timer-loader" style="display: none"></div>
+                        <table class="table table-bordered table-dark" id="history_table" style="display: none">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Original link</th>
+                                    <th scope="col">Shortened link</th>
+                                    <th scope="col">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history_table_body">
+                            </tbody>
+                        </table>
+                        <div class="alert alert-danger" id="historyError" role="alert" style="display: none"></div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="mt-auto text-white-50">
+                <a href="https://t.me/safonof" style="color: white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path>
+                    </svg>
+                </a>
+            </footer>
+        </div>
+
+        <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script th:src="@{https://code.jquery.com/jquery-3.6.1.min.js}" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script th:src="@{js/scripts.js}"></script>
+    </body>
+</html>
